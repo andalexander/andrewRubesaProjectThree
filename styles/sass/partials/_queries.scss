@@ -1,0 +1,173 @@
+@media (min-width: 300px) {
+
+html {
+    padding: 0;
+    margin: 0;
+    font-size: 125%; 
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+} 
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+//INTRODUCTION STYLING
+
+//LOGO STYLING
+.logo {
+    background: $color2 url('../assets/orangejulius.png') no-repeat;
+    background-position: 50.6% 50%;
+    background-size: 160%;
+    height: 100vh;
+    position: relative;
+    // border: 1px solid red;
+h1 {
+    text-align: center;
+    font-family: $Bebas;
+    font-size: 4rem;
+    color: $color1;
+    margin: 0 auto;
+    padding-top: 10%;
+}p {
+    position: absolute;
+    top: 88%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    font-family: $Bebas;
+    font-size: 1.3rem;
+}
+}
+
+//INSTRUCTIONS STYLING
+.instructions {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    height: 100vh;
+    background: $color2;
+h2 {
+    color: $color5;
+    font-family: $Bebas;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}p {
+    font-size: 0.8rem;
+    font-family: $Roboto;
+    color: $color1;
+}li {
+    margin: 0;
+    list-style: none;
+    list-style-position: outside;
+    padding-bottom: 15px;
+    font-size: 0.8rem;
+    font-family: $Roboto;
+    color: $color1;
+}
+}
+
+.whatIsCipher {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    background: $color3;
+    height: calc(100% / 3);
+}
+
+.howItWorks {
+    display: flex;
+    background: $color4;
+    height: calc(100% / 3);
+}
+
+.whatToDo {
+    display: flex;
+    background: $color3;
+    height: calc(100% / 3);
+li {
+    padding: 5px;
+}
+}
+
+.textBox {
+    padding: 0 20px 0 20px;
+    margin: auto;
+}
+
+//CIPHERS SECTION STYLING
+.ciphers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: $color2;
+    height: 100vh;
+}
+
+.msgToCode {
+    width: 90%;
+    margin-bottom: 20px;
+p {
+    margin: 15px 0;
+    padding-top: 20px;
+    font-family: $Bebas;
+    font-size: 1.5rem;
+}textarea {
+    resize: none;
+    display: block;
+    width: 100%;
+    height: 250px;
+    background: rgba(234, 234, 238, .3);
+    border: 1px solid $color4;
+}
+}
+
+.encryptBtn {
+    width: 90%;
+input {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: $Bebas;
+    font-size: 1.5rem;
+    background: $color1;
+    color: $color3;
+    border: 3px solid $color4;
+}input:hover {
+    color: $color1;
+    background: $color3;
+    border: 3px solid $color1;
+    cursor: pointer;
+}
+}
+
+.encodedMsg {
+    width: 90%;
+p {
+    margin: 15px 0;
+    font-family: $Bebas;
+    font-size: 1.5rem;
+}
+}
+
+.msgDisplay {
+    border: 1px solid $color5;
+    background: rgba(234, 234, 238, .3);
+    width: 100%;
+    height: 250px;
+    margin-bottom: 5%;
+}
+
+} //END OF 300px MEDIA QUERY
+
