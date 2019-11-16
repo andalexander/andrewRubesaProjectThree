@@ -4,7 +4,7 @@
 
 //1. This app will allow users to encode a message of their choice using the Caesar Cipher.
 //2. Site will have an introduction explaining what the Caesar Cipher is.
-//3. Users can fill a textfield with a custom message, and press a submit button to encode the message 
+//3. Users can fill a textfield with a custom message, and press a submit button to encode the message
 //   using a predetermined letter shift.
 //4. The limit of character is set to 280 to mimic twitter character limit.
 
@@ -31,42 +31,67 @@
 //4. Run the variable through our code function, and create a variable for the result.
 //5 Take result from function and put it in a div with a class of box.
 
-
 const cipherApp = {};
 
-// cipherApp.alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+cipherApp.alphabet = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z"
+];
 
+cipherApp.shiftKey = 3;
 
-cipherApp.cipherFunction = $('input').on('click', function(e){
-    e.preventDefault();
-    const userMessage = $('textarea').val();
-    $('.msgDisplay').append(userMessage);
-    console.log(cipherApp.cipherFunction);
+cipherApp.convertMessage = (msgToEncode, shiftKey) => {
+  const usersArray = Array.from(msgToEncode.toLowerCase());
+  const encriptedUserArray = usersArray.map(character => {
+    const index = cipherApp.alphabet.indexOf(character);
+    if (index === -1) return character;
+    let newIndex = index + shiftKey;
+    if (newIndex >= cipherApp.alphabet.length)
+      newIndex = newIndex - cipherApp.alphabet.length;
+    if (newIndex < 0) newIndex = newIndex + cipherApp.alphabet.length;
+    return cipherApp.alphabet[newIndex];
+  });
+  return encriptedUserArray.join("");
+};
+
+cipherApp.cipherFunction = $("#submitMsg").on("click", function(e) {
+  e.preventDefault();
+  const msgToEncode = $("#toEncode").val();
+  const convertedMessage = cipherApp.convertMessage(
+    msgToEncode,
+    cipherApp.shiftKey
+  );
+  $(".msgDisplay").html(convertedMessage);
+  // $("#toEncode").val("");
 }); //END OF cipherFunction
 
+$(document).ready(function() {}); //END OF DOCUMENT READY
 
-
-
-$(document).ready(function(){
-    // cipherApp.cipherFunction();
-}); //END OF DOCUMENT READY
-
-
-
-
-
-
-
-const magicApp = {};
-
-magicApp.apiKey = '$2a$10$UwzSuQ6684FmIGSXgEkPBufXMp7fz8zpw.dOF0wEt5YIeFzY8WjUO';
-magicApp.url = 'https://www.potterapi.com/v1/spells';
-
-
-magicApp.getSpells = () => {
-
-}
-
-$(document).ready(function(){
-    magicApp.getSpells();
-}); //END OF DOCUMENT READY
+//TO DO:
+// Add decryption button
+// user selected shift
+// preserving capital letter
