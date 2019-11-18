@@ -1,38 +1,6 @@
-// Pseudo-code for project 3.
-
-// Caesar Cipher.
-
-//1. This app will allow users to encode a message of their choice using the Caesar Cipher.
-//2. Site will have an introduction explaining what the Caesar Cipher is.
-//3. Users can fill a textfield with a custom message, and press a submit button to encode the message
-//   using a predetermined letter shift.
-//4. The limit of character is set to 280 to mimic twitter character limit.
-
-//MVP:
-// 1. Take the input from user from the textarea and take the last letter of the message and put it at the beginning.
-//2. Achieving this, try to accomplish changing every letter 'a' (0 index) and to it into the letter 'b' (1 index).
-//3. Achieving this, take every letter in users message and shift it by 3 indices and output that to my emty div.
-
-//Stretch goals:
-// 2. Allow the users to choose their own letter shift to customize how their message is encrypted.
-// 3. Give the users the ability to send the encrypted message to friends to have their friends try and
-//    decode the message.
-// 4. Have another section of the site that will decrypt the message for users when they enter a shift
-//    value.
-// 5.  Have functionality that allows users to interact this with Twitter.
-// 6. Animate title of site from encrypted text do decrypted.
-
-//1. On click of submit button.
-//2. Grab the input from the first textarea and save it as a variable.
-//3. Create code function.
-//3a. This code funcion would take the last letter in the user's message, and place it at the beginning.
-//3b. Change this function to change user's message using the intended methodology.
-//    Find the index of the letter then add 1, take that sum and find out what letter in array is at that       index.
-//4. Run the variable through our code function, and create a variable for the result.
-//5 Take result from function and put it in a div with a class of box.
-
 const cipherApp = {};
 
+//ALPHABET USERS INPUT WILL BE EVALUATED AGAINST AFTER ARRAY CONVERSION:
 cipherApp.alphabet = [
   "a",
   "b",
@@ -59,39 +27,95 @@ cipherApp.alphabet = [
   "w",
   "x",
   "y",
-  "z"
+  "z",
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z"
 ];
 
-cipherApp.shiftKey = 3;
+//DEFAULT VALUE FOR DROPDOWN MENU IF USER DOES NOT "CHANGE" THE DROPDOWN VALUE:
+cipherApp.shiftKey = 1;
 
-cipherApp.convertMessage = (msgToEncode, shiftKey) => {
-  const usersArray = Array.from(msgToEncode.toLowerCase());
+//PULL USERS INPUT FROM DROPDOWN MENU:
+cipherApp.shiftSelect = function() {
+  cipherApp.shiftKey = parseInt($(this).val());
+};
+
+//CIPHER FUNCTION:
+cipherApp.convertMessage = (messageToRun, shiftKey) => {
+  const usersArray = Array.from(messageToRun);
   const encriptedUserArray = usersArray.map(character => {
     const index = cipherApp.alphabet.indexOf(character);
     if (index === -1) return character;
     let newIndex = index + shiftKey;
-    if (newIndex >= cipherApp.alphabet.length)
-      newIndex = newIndex - cipherApp.alphabet.length;
-    if (newIndex < 0) newIndex = newIndex + cipherApp.alphabet.length;
+    if (newIndex < 0) newIndex += cipherApp.alphabet.length;
+    newIndex = newIndex % cipherApp.alphabet.length;
     return cipherApp.alphabet[newIndex];
   });
   return encriptedUserArray.join("");
 };
 
-cipherApp.cipherFunction = $("#submitMsg").on("click", function(e) {
+//EVENT HANDLER FOR "ENCRYPT" BUTTON:
+cipherApp.encryptClick = function(e) {
   e.preventDefault();
-  const msgToEncode = $("#toEncode").val();
-  const convertedMessage = cipherApp.convertMessage(
-    msgToEncode,
-    cipherApp.shiftKey
-  );
-  $(".msgDisplay").html(convertedMessage);
-  // $("#toEncode").val("");
-}); //END OF cipherFunction
+  const messageToRun = $("#toRun").val();
+  if (messageToRun.length == 0) {
+    $(".messageDisplay").html("Please enter a message.");
+  } else {
+    const convertedMessage = cipherApp.convertMessage(
+      messageToRun,
+      cipherApp.shiftKey
+    );
+    $(".messageDisplay").html(convertedMessage);
+  }
+};
 
-$(document).ready(function() {}); //END OF DOCUMENT READY
+//EVENT HANDER FOR "DECRYPT" BUTTON:
+cipherApp.decryptClick = function(e) {
+  e.preventDefault();
+  const messageToRun = $("#toRun").val();
+  if (messageToRun.length == 0) {
+    $(".messageDisplay").html("Please enter a message.");
+  } else {
+    const convertedMessage = cipherApp.convertMessage(
+      messageToRun,
+      -cipherApp.shiftKey
+    );
+    $(".messageDisplay").html(convertedMessage);
+  }
+  $(".messageDisplay").html(convertedMessage);
+};
 
-//TO DO:
-// Add decryption button
-// user selected shift
-// preserving capital letter
+//INITIALIZE:
+cipherApp.init = function() {
+  $("#decryptMessage").on("click", cipherApp.decryptClick);
+  $("#encryptMessage").on("click", cipherApp.encryptClick);
+  $("#shiftKey")
+    .find("option")
+    .on("click", cipherApp.shiftSelect);
+};
+
+$(document).ready(cipherApp.init); //DOCUMENT READY

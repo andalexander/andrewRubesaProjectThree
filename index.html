@@ -1,85 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./styles/sass/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Roboto&display=swap" rel="stylesheet"> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./styles/sass/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Bebas+Neue|Roboto&display=swap"
+      rel="stylesheet"
+    />
     <title>The Caesar Cipher</title>
-</head>
-<body>
+  </head>
+  <body>
+    <!-- LOAD jQUERY: -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <!-- LOAD jQUERY: -->
 
-<!-- LOAD jQUERY: -->
-<script
-src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" 
-crossorigin="anonymous"></script>
-<!-- LOAD jQUERY: -->
-
-<main>
-    
-    <section class="introduction">
-
-        <div class="logo clearfix">
-            <h1>The Caesar Cipher</h1>
-            <p>Encode a message using the Caesar Cipher</p>
-            
+    <!-- MAIN SECTION -->
+    <main>
+      <!-- BG IMG AND TITLE -->
+      <section class="introduction">
+        <div class="logo">
+          <h1>The Caesar Cipher</h1>
         </div>
 
+        <!-- WHAT IS CAESAR CIPHER? -->
         <div class="instructions">
-            <div class="whatIsCipher">
-                <div class="textBox">
-                    <h2>What is the Caesar Cipher?</h2>
-                    <p>Attributed to Julius Caesar, the Caesar cipher is one of the oldest known methods of cryptology. It is a <span>substitution cipher</span>, meaning the letters in the cipher are substituted using a shift.</p>
-                </div>
+          <div class="grayBox">
+            <div class="textBox wrapper">
+              <h2>What is the Caesar Cipher?</h2>
+              <p>
+                Attributed to Julius Caesar, it is one of the oldest known
+                methods of cryptology. It works using a "substitution cipher"
+                meaning the letters in the message are substituted using a
+                shift.
+              </p>
             </div>
+          </div>
 
-            <div class="howItWorks">
-                <div class="textBox">
-                    <h2>How does it work?</h2>
-                    <p>Alice and Bob want to share a private message with each other but they know Eve is listening. To keep their message secret, they move every letter in their message by an agreed shift. If the shift is 3, for example, 'a' becomes 'd', 'b' becomes 'e' and so on. </p>
-                </div>
+          <!-- HOW DOES IT WORK? -->
+          <div class="yellowBox">
+            <div class="textBox wrapper">
+              <h2>How does it work?</h2>
+              <p>
+                Alice and Bob want to share a private message with each
+                other—but they know Eve is listening. To keep their message
+                secret, they agree to move every letter in their message by a
+                shift. If the shift is 3 for example, "a" becomes "d" and "b"
+                becomes "e" etc.
+              </p>
             </div>
+          </div>
 
-            <div class="whatToDo">
-                <div class="textBox">
-                    <h2>Instructions</h2>
-                    <ul>
-                        <li>1. Enter a message in the "Message to encrypt" box.</li>
-                        <li>2. Messages hax a max length of 280 character.</li>
-                        <li>3. Only use letters and numbers. Any other inputs are invalid.</li>
-                        <li>4. Click "encrypt" to encrypt your message.</li>
-                    </ul>
-                </div>
+          <!-- INSTRUCTIONS -->
+          <div class="grayBox">
+            <div class="textBox wrapper">
+              <h2>Instructions</h2>
+              <ul>
+                <li>
+                  1. Select your desired shift from the drop-down.
+                </li>
+                <li>
+                  2. Enter your message. It can have a max lenght of 280
+                  characters.
+                </li>
+                <li>
+                  3. Click "encrypt" or "decrypt" to shift or unshift your
+                  message.
+                </li>
+              </ul>
             </div>
+          </div>
+        </div>
+      </section>
+      <!--END OF INTRODUCTION SECTION-->
 
+      <!-- CIPHER INPUT AREA -->
+      <section class="ciphers">
+        <!-- DROPDOWN MENU -->
+        <div class="usersShiftChoice">
+          <label for="shiftKey"
+            >Select the number of shifts for each letter:</label
+          >
+          <select name="shiftKey" id="shiftKey">
+            <!--Positive values:-->
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="19">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <!--Negative values:-->
+            <option value="-1">-1</option>
+            <option value="-2">-2</option>
+            <option value="-3">-3</option>
+            <option value="-4">-4</option>
+            <option value="-5">-5</option>
+            <option value="-6">-6</option>
+            <option value="-7">-7</option>
+            <option value="-8">-8</option>
+            <option value="-9">-9</option>
+            <option value="-10">-10</option>
+            <option value="-11">-11</option>
+            <option value="-12">-12</option>
+            <option value="-13">-13</option>
+            <option value="-14">-14</option>
+            <option value="-15">-15</option>
+            <option value="-16">-16</option>
+            <option value="-17">-17</option>
+            <option value="-18">-18</option>
+            <option value="-19">-19</option>
+            <option value="-19">-20</option>
+            <option value="-21">-21</option>
+            <option value="-22">-22</option>
+            <option value="-23">-23</option>
+            <option value="-24">-24</option>
+            <option value="-25">-25</option>
+          </select>
         </div>
 
-    </section> <!--END OF INTRODUCTION SECTION-->
-
-    <section class="ciphers">
-
-        <div class="msgToCode">
-            <p>Message to encrypt:</p>
-                <label for="toEncode" class="visually-hidden">Enter the message you wish to encode.</label>
-                <input type="text" name="toEncode" id="toEncode">
+        <!-- INPUT FIELD FOR USERS MESSAGE -->
+        <div class="messageToRun wrapper">
+          <p>Enter your message:</p>
+          <label for="toRun" class="visually-hidden"
+            >Enter the message you wish to encode or decode.</label
+          >
+          <input type="text" name="toRun" id="toRun" maxlength="280" />
         </div>
 
-        <div class="encryptBtn">
-            <label for="submitMsg" class="visually-hidden">Press to encrypt your message:</label>
-            <input type="submit" name="submitMsg" id="submitMsg" value="Encrypt">
+        <!-- ENCRYP BUTTON -->
+        <div class="encryptButton wrapper">
+          <label for="encryptMessage" class="visually-hidden"
+            >Press to encrypt your message:</label
+          >
+          <input
+            type="submit"
+            name="encryptMessage"
+            id="encryptMessage"
+            value="Encrypt"
+          />
         </div>
 
-        <div class="encodedMsg">
-            <p>Your encrypted message:</p>
-            <div class="msgDisplay">
+        <!-- DECRYPT BUTTON -->
+        <div class="decryptButton wrapper">
+          <label for="submitMessage" class="visually-hidden"
+            >Press to decrypt your message:</label
+          >
+          <input
+            type="submit"
+            name="decryptMessage"
+            id="decryptMessage"
+            value="Decrypt"
+          />
+        </div>
+
+        <!-- DIV TO DISPLAY OUTPUT MESSAGE -->
+        <div class="encodedMessage wrapper">
+          <p>Your result:</p>
+          <div class="messageDisplay">
             <!-- Encoded message goes here -->
-            </div>
+          </div>
         </div>
+      </section>
+      <!--END OF CIPHERS SECTION-->
 
-    </section>
-
-<script src="./scripts.js"></script>
-
-</body>
+      <!-- LOAD EXTERNAL SCRIPT SHEET -->
+      <script src="./scripts.js"></script>
+    </main>
+  </body>
 </html>

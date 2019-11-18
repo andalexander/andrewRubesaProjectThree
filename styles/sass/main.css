@@ -253,184 +253,252 @@ html {
 
 /* HSL */
 /* RGB */
-@media (min-width: 300px) {
-  html {
-    padding: 0;
-    margin: 0;
-    font-size: 125%;
+html {
+  padding: 0;
+  margin: 0;
+  font-size: 125%;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+  /* added line */
+}
+
+.logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #fbfffe url("../assets/orangeJulius2.png") no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.logo h1 {
+  text-align: center;
+  font-family: "Bebas Neue", cursive;
+  font-size: 6rem;
+  color: #0c090d;
+  margin-top: 10px;
+}
+
+.instructions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #fbfffe;
+}
+
+.instructions h2 {
+  color: #0c090d;
+  font-family: "Bebas Neue", cursive;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.instructions p {
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  color: #0c090d;
+}
+
+.instructions li {
+  margin: 0;
+  list-style: none;
+  padding-bottom: 15px;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  color: #0c090d;
+}
+
+.yellowBox {
+  background: #ffea07;
+}
+
+.grayBox {
+  background: #eaeaee;
+}
+
+.textBox {
+  padding: 20px 0;
+}
+
+.ciphers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #fbfffe;
+}
+
+.usersShiftChoice {
+  margin: 40px 0;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.5rem;
+}
+
+select:focus {
+  outline: 3px solid red;
+}
+
+.messageToRun {
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.messageToRun p {
+  margin: 15px 0;
+  padding-top: 20px;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.5rem;
+}
+
+.messageToRun input {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  height: 50px;
+  background: rgba(234, 234, 238, 0.3);
+  border: 2px solid #0c090d;
+}
+
+.messageToRun input:focus {
+  outline: 3px solid red;
+}
+
+.encryptButton {
+  width: 50%;
+  text-align: center;
+}
+
+.encryptButton #encryptMessage {
+  width: 80%;
+  border: none;
+  padding: 10px;
+  margin: 10px 0;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.5rem;
+  background: #0c090d;
+  color: #fbfffe;
+}
+
+.encryptButton #encryptMessage:hover {
+  color: #fbfffe;
+  background: #0050d1;
+  cursor: pointer;
+}
+
+.encryptButton input:focus {
+  outline: 3px solid red;
+}
+
+.decryptButton {
+  width: 50%;
+  text-align: center;
+}
+
+.decryptButton #decryptMessage {
+  width: 80%;
+  border: none;
+  padding: 10px;
+  margin: 10px 0;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.5rem;
+  background: #0c090d;
+  color: #fbfffe;
+}
+
+.decryptButton #decryptMessage:hover {
+  color: #fbfffe;
+  background: #0050d1;
+  cursor: pointer;
+}
+
+.decryptButton input:focus {
+  outline: 3px solid red;
+}
+
+.encodedMessage {
+  width: 90%;
+}
+
+.encodedMessage p {
+  margin: 15px 0;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.5rem;
+}
+
+.messageDisplay {
+  border: 2px solid #0c090d;
+  background: rgba(234, 234, 238, 0.3);
+  width: 100%;
+  height: 250px;
+  padding: 15px;
+  margin-bottom: 5%;
+}
+
+@media (max-width: 1230px) {
+  .textBox {
+    padding: 40px;
   }
-  .clearfix:after {
-    visibility: hidden;
-    display: block;
-    font-size: 0;
-    content: " ";
-    clear: both;
-    height: 0;
-  }
-  .wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .logo {
-    background: #fbfffe url("../assets/orangejulius.png") no-repeat;
-    background-position: 50.6% 50%;
-    background-size: 160%;
-    height: 100vh;
-    position: relative;
-  }
+}
+
+@media (max-width: 750px) {
   .logo h1 {
-    text-align: center;
-    font-family: "Bebas Neue", cursive;
-    font-size: 4rem;
-    color: #0c090d;
-    margin: 0 auto;
-    padding-top: 10%;
+    font-size: 5rem;
   }
-  .logo p {
-    position: absolute;
-    top: 88%;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    font-family: "Bebas Neue", cursive;
+}
+
+@media (max-width: 625px) {
+  .logo h1 {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .logo h1 {
+    font-size: 3rem;
+  }
+  .usersShiftChoice {
+    padding: 50px;
     font-size: 1.3rem;
   }
-  .instructions {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-line-pack: center;
-        align-content: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    height: 100vh;
-    background: #fbfffe;
-  }
-  .instructions h2 {
-    color: #0050d1;
-    font-family: "Bebas Neue", cursive;
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-  }
-  .instructions p {
-    font-size: 0.8rem;
-    font-family: "Roboto", sans-serif;
-    color: #0c090d;
-  }
-  .instructions li {
-    margin: 0;
-    list-style: none;
-    list-style-position: outside;
-    padding-bottom: 15px;
-    font-size: 0.8rem;
-    font-family: "Roboto", sans-serif;
-    color: #0c090d;
-  }
-  .whatIsCipher {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-line-pack: center;
-        align-content: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    width: 100%;
-    background: #eaeaee;
-    height: calc(100% / 3);
-  }
-  .howItWorks {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    background: #ffea07;
-    height: calc(100% / 3);
-  }
-  .whatToDo {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    background: #eaeaee;
-    height: calc(100% / 3);
-  }
-  .whatToDo li {
-    padding: 5px;
-  }
-  .textBox {
-    padding: 0 20px 0 20px;
-    margin: auto;
-  }
-  .ciphers {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    background: #fbfffe;
-    height: 100vh;
-  }
-  .msgToCode {
-    width: 90%;
-    margin-bottom: 20px;
-  }
-  .msgToCode p {
-    margin: 15px 0;
-    padding-top: 20px;
-    font-family: "Bebas Neue", cursive;
-    font-size: 1.5rem;
-  }
-  .msgToCode textarea {
-    resize: none;
-    display: block;
-    width: 100%;
-    height: 250px;
-    background: rgba(234, 234, 238, 0.3);
-    border: 1px solid #ffea07;
-  }
-  .encryptBtn {
-    width: 90%;
-  }
-  .encryptBtn input {
-    width: 100%;
-    border: none;
-    padding: 10px;
-    margin: 10px 0;
-    font-family: "Bebas Neue", cursive;
-    font-size: 1.5rem;
-    background: #0c090d;
-    color: #eaeaee;
-    border: 3px solid #ffea07;
-  }
-  .encryptBtn input:hover {
-    color: #0c090d;
-    background: #eaeaee;
-    border: 3px solid #0c090d;
-    cursor: pointer;
-  }
-  .encodedMsg {
-    width: 90%;
-  }
-  .encodedMsg p {
-    margin: 15px 0;
-    font-family: "Bebas Neue", cursive;
-    font-size: 1.5rem;
-  }
-  .msgDisplay {
-    border: 1px solid #0050d1;
-    background: rgba(234, 234, 238, 0.3);
-    width: 100%;
-    height: 250px;
-    margin-bottom: 5%;
+}
+
+@media (max-width: 375px) {
+  .logo h1 {
+    margin-top: 50px;
+    font-size: 2.5rem;
   }
 }
 /*# sourceMappingURL=main.css.map */
